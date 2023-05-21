@@ -313,7 +313,7 @@ class _Signup_screenState extends State<Signup_screen> {
                                         }
                                         print(confirmpasswordController.text);
 
-                                      
+                                    
                                         if(passwordController.text!=confirmpasswordController.text){
                                           return "Password does not match";
                                         }

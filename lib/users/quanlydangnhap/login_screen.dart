@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/users/fragments/dashboard_of_fragments.dart';
+import 'package:flutter_application_1/users/fragments/overview_app_screen.dart';
 import 'package:flutter_application_1/users/model/user.dart';
 import 'package:flutter_application_1/users/quanlydangnhap/signup_screen.dart';
 import 'package:flutter_application_1/users/userPreferences/user_preferences.dart';
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
              await RememberUserPrefs.saveRememberUser(userInfo);
 
              Future.delayed(Duration(milliseconds: 2000),(){
-              Get.to(DashboardOfFragments());
+              Get.to(OverViewAppScreen());
              });
             }
             else{
