@@ -1,10 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/users/quanlydangnhap/login_screen.dart';
 
+import 'package:flutter_application_1/users/userPreferences/current_user.dart';
+import 'package:flutter_application_1/users/userPreferences/user_preferences.dart';
+import 'package:get/get.dart';
 import 'body_overview_screen.dart';
 
 
-class OverViewAppScreen extends StatelessWidget {
-  const OverViewAppScreen({super.key});
+class OverViewAppScreen extends StatefulWidget {
+
+
+
+  @override
+  State<OverViewAppScreen> createState() => _OverViewAppScreenState();
+}
+
+class _OverViewAppScreenState extends State<OverViewAppScreen> {
+  final CurrentUser _currentUser = Get.put(CurrentUser());
+
+  signOutUser() async{
+    var resultRespone = await Get.dialog(
+      AlertDialog(
+        backgroundColor: Colors.grey,
+        title: const Text(
+          "LogOut",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        content: const Text(
+          "Are you want to logout from app ?"
+        ),
+        actions: [
+          TextButton(onPressed: (){
+          Get.back();
+        },
+         child: const Text(
+          "No",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+         )
+         ),
+         TextButton(onPressed: (){
+          Get.back(result: "LoggedOut");
+        },
+         child: const Text(
+          "Yes",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+         ))],
+         
+      )
+    );
+    if(resultRespone == "LoggedOut"){
+      // remove the userdata from phone local storage
+      RememberUserPrefs.removeUserInfo().then((value){
+        Get.off(LoginScreen());
+      });
+    }
+  }
+
+  Widget getData(IconData iconData, String userData){
+    return Container(
+      decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(12),
+       color: Colors.grey,
+        
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
+      child: Row(
+        children: [
+          Icon(
+            iconData,
+            size: 30,
+            color: Colors.black,
+          ),
+        const SizedBox(width: 16,),
+        Text(
+          userData,
+          style: const TextStyle(
+            fontSize: 15,
+          ) ,
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget buildBodyDrawer(IconData icon, String title) {
     return ListTile(
@@ -33,12 +120,13 @@ class OverViewAppScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 230,
-              padding: EdgeInsets.only(top: 50),
-              color: Theme.of(context).accentColor,
+              height: 310,
+              padding: const EdgeInsets.only(top: 50),
+              color: Theme.of(context).colorScheme.secondary,
               child: Column(
-                children: const [
-                  Center(
+                children: [
+                
+                  const Center(
                     child: CircleAvatar(
                       radius: 60,
                       backgroundImage: NetworkImage(
@@ -57,17 +145,19 @@ class OverViewAppScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 7,
+
+
+
+
+                  
+                 const SizedBox(
+                    height: 10,
                   ),
-                  Text(
-                    'Phạm Hòn Việt',
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                getData(Icons.person, _currentUser.user.userName),
+                const SizedBox(
+                    height: 10,
                   ),
-                  Text(
-                    'vietpham@gmail.com',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
+                getData(Icons.email, _currentUser.user.email),
                 ],
               ),
             ),
@@ -80,11 +170,36 @@ class OverViewAppScreen extends StatelessWidget {
             const Divider(),
             buildBodyDrawer(Icons.delete_outline, 'Xóa tài khoản'),
             const Divider(),
-            buildBodyDrawer(Icons.logout_outlined, 'Đăng xuất'),
+            Center(
+              child: Material(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(8),
+                child: InkWell(
+                  onTap: ()
+                  {
+                    signOutUser();
+                  },
+                  borderRadius: BorderRadius.circular(32),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 12,
+                    ),
+                    child: Text(
+                      "Sign Out.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                    ),
+                ),
+              ),
+            )
           ],
         ),
       ),
-      body: BodyOverviewScreen(),
+      body:  BodyOverviewScreen(),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: const [
@@ -94,7 +209,9 @@ class OverViewAppScreen extends StatelessWidget {
             BottomNavigationBarItem(
                 icon: Icon(Icons.notifications), label: 'Thông báo'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: 'Cài đặt'),
+                icon: Icon(Icons.settings), label: 'Cài đặt'
+                
+                ),
           ]),
     );
   }

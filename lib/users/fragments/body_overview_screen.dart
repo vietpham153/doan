@@ -1,9 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/users/fragments/dat_lich_screen.dart';
+import 'package:get/get.dart';
 
-class BodyOverviewScreen extends StatelessWidget {
-  const BodyOverviewScreen({super.key});
+import '../userPreferences/current_user.dart';
 
+
+
+class BodyOverviewScreen extends StatefulWidget {
+ const BodyOverviewScreen({super.key});
+
+  @override
+  State<BodyOverviewScreen> createState() => _BodyOverviewScreenState();
+  
+}
+
+class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
+  // final CurrentUser _currentUser = Get.put(CurrentUser());
+//test
+  // Widget getData(IconData iconData, String userData){
+  //   return Container(
+  //     decoration: BoxDecoration(
+  //     borderRadius: BorderRadius.circular(12),
+  //      color: Colors.grey,
+        
+  //     ),
+  //     padding: const EdgeInsets.symmetric(
+  //       horizontal: 16,
+  //       vertical: 8,
+  //     ),
+  //     child: Row(
+  //       children: [
+  //         Icon(
+  //           iconData,
+  //           size: 30,
+  //           color: Colors.black,
+  //         ),
+  //       const SizedBox(width: 16,),
+  //       Text(
+  //         userData,
+  //         style: const TextStyle(
+  //           fontSize: 15,
+  //         ) ,
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+//test
   Widget buildServiceGridview(BuildContext context, String title, IconData icon,
       Function() tapHandler) {
     return InkWell(
@@ -47,8 +90,10 @@ class BodyOverviewScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text('Chào'),
+                      // getData(Icons.person, _currentUser.user.userName),
                       Row(
                         children: const [
+                          
                           Text(
                             'Phạm Hòn Việt  ',
                             style: TextStyle(
