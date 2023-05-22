@@ -9,9 +9,7 @@ import 'body_overview_screen.dart';
 
 class OverViewAppScreen extends StatefulWidget {
 
-
-
-  @override
+@override
   State<OverViewAppScreen> createState() => _OverViewAppScreenState();
 }
 
@@ -63,7 +61,7 @@ class _OverViewAppScreenState extends State<OverViewAppScreen> {
     }
   }
 
-  Widget getData(IconData iconData, String userData){
+  Widget getData( String userData){
     return Container(
       decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
@@ -76,12 +74,7 @@ class _OverViewAppScreenState extends State<OverViewAppScreen> {
       ),
       child: Row(
         children: [
-          Icon(
-            iconData,
-            size: 30,
-            color: Colors.black,
-          ),
-        const SizedBox(width: 16,),
+          
         Text(
           userData,
           style: const TextStyle(
@@ -153,11 +146,11 @@ class _OverViewAppScreenState extends State<OverViewAppScreen> {
                  const SizedBox(
                     height: 10,
                   ),
-                getData(Icons.person, _currentUser.user.userName),
+                getData(_currentUser.user.userName),
                 const SizedBox(
                     height: 10,
                   ),
-                getData(Icons.email, _currentUser.user.email),
+                getData(_currentUser.user.email),
                 ],
               ),
             ),

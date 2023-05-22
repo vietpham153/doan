@@ -8,4 +8,6 @@ class API {
   static const signUp = "$hostConnect/user/signup.php";
   //login
   static const login = "$hostConnect/user/login.php";
+  //doctor
+  static const logind = "$hostConnect/doctor/logind.php";
 }

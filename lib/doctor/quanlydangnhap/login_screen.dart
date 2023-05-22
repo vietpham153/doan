@@ -1,36 +1,33 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/doctor/quanlydangnhap/login_screen.dart';
-import 'package:flutter_application_1/users/fragments/overview_app_screen.dart';
-import 'package:flutter_application_1/users/model/user.dart';
-import 'package:flutter_application_1/users/quanlydangnhap/signup_screen.dart';
-import 'package:flutter_application_1/users/userPreferences/user_preferences.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../api_connection/api_connection.dart';
+import '../../users/quanlydangnhap/login_screen.dart';
+import '../fragments/overview_app_screen.dart';
 
 
-class LoginScreen extends StatefulWidget {
+class LoginScreenDo extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenDo> createState() => _LoginScreenStateD();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenStateD extends State<LoginScreenDo> {
   var formKey = GlobalKey<FormState>();
   var accountController = TextEditingController();
   var passwordController = TextEditingController();
   var isObsecure = true.obs;
 
-  loginUserNow() async{
+  loginDoctorNow() async{
     try{
         var res = await http.post(
-            Uri.parse(API.login),
+            Uri.parse(API.logind),
             body: {
-              "Useraccount": accountController.text.trim(),
-              "Userpassword": passwordController.text.trim(),
+              "userAcount": accountController.text.trim(),
+              "userPassword": passwordController.text.trim(),
             },
           );
 
@@ -44,13 +41,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 passwordController.clear();
               });
 
-             User userInfo = User.fromJson(resBodyOfLogin["userData"]);
+
 
              //Save user info to local storage using Shared Prefrences
-             await RememberUserPrefs.storeUserInfo(userInfo);
+
 
              Future.delayed(Duration(milliseconds: 2000),(){
-              Get.to(OverViewAppScreen());
+              Get.to(OverViewAppScreenD());
              });
             }
             else{
@@ -115,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   TextFormField(
                                     controller: accountController,
                                     validator: (val) => val == ""
-                                        ? "Please write UserName"
+                                        ? "Please write UserName of Doctor"
                                         : null,
                                     decoration: InputDecoration(
                                       prefixIcon: const Icon(
@@ -238,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: InkWell(
                                       onTap: () {
                                         if (formKey.currentState!.validate()){
-                                          loginUserNow();
+                                          loginDoctorNow();
                                         }
                                       },
                                       borderRadius: BorderRadius.circular(30),
@@ -262,19 +259,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             //button regist
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text("Don't have an account?"),
+                                const Text("Are you user?"),
                                 TextButton(
                                   onPressed: () {
-                                    Get.to(Signup_screen());
+                                    Get.to(LoginScreen());
                                   },
                                   child: const Text(
-                                    "Register!",
+                                    "Click here!",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
@@ -293,11 +290,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text("Are U a doctor?"),
+                                const Text("Are U an Admin?"),
                                 TextButton(
-                                  onPressed: () {
-                                    Get.to(LoginScreenDo());
-                                    },
+                                  onPressed: () {},
                                   child: const Text(
                                     "click here!",
                                     style: TextStyle(
