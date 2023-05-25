@@ -17,7 +17,7 @@ class BodyOverviewScreen extends StatefulWidget {
 class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
   // final CurrentUser _currentUser = Get.put(CurrentUser());
 //test
-  // Widget getData(IconData iconData, String userData){
+  // Widget getData( String userData){
   //   return Container(
   //     decoration: BoxDecoration(
   //     borderRadius: BorderRadius.circular(12),
@@ -30,11 +30,7 @@ class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
   //     ),
   //     child: Row(
   //       children: [
-  //         Icon(
-  //           iconData,
-  //           size: 30,
-  //           color: Colors.black,
-  //         ),
+  //         
   //       const SizedBox(width: 16,),
   //       Text(
   //         userData,
@@ -90,7 +86,7 @@ class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text('Chào'),
-                      // getData(Icons.person, _currentUser.user.userName),
+                      // getData( _currentUser.user.userName),
                       Row(
                         children: const [
                           
@@ -111,7 +107,7 @@ class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
                 const CircleAvatar(
                     radius: 20,
                     backgroundImage: NetworkImage(
-                        'https://scontent.fsgn14-1.fna.fbcdn.net/v/t1.15752-9/324220059_3476629519237918_5671512060780998457_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=wDy5UrBnrPAAX8Jw8bJ&_nc_ht=scontent.fsgn14-1.fna&oh=03_AdRyouDMW2yAfbeRhH2r1rXxbrjvMNHmExCS01OA3_cwng&oe=64811BEB'),
+                        'https://i-vnexpress.vnecdn.net/2022/05/22/AnhNgocapng-1653235218.png'),
                     child: Text(''))
               ],
             ),
