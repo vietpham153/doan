@@ -15,33 +15,37 @@ class BodyOverviewScreen extends StatefulWidget {
 }
 
 class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
-  // final CurrentUser _currentUser = Get.put(CurrentUser());
+  final CurrentUser _currentUser = Get.put(CurrentUser());
 //test
-  // Widget getData( String userData){
-  //   return Container(
-  //     decoration: BoxDecoration(
-  //     borderRadius: BorderRadius.circular(12),
-  //      color: Colors.grey,
+  Widget getData( String userData){
+    return Container(
+      decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(12),
+      color: Color.fromARGB(60, 199, 198, 198),
         
-  //     ),
-  //     padding: const EdgeInsets.symmetric(
-  //       horizontal: 16,
-  //       vertical: 8,
-  //     ),
-  //     child: Row(
-  //       children: [
-  //         
-  //       const SizedBox(width: 16,),
-  //       Text(
-  //         userData,
-  //         style: const TextStyle(
-  //           fontSize: 15,
-  //         ) ,
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 50,
+        vertical: 5,
+      ),
+      child: Row(
+        children: [
+          
+        const SizedBox(width: 16,),
+        Text(
+          userData,
+          style: const TextStyle(
+            fontSize: 15,
+          ) ,
+          ),
+          const Icon(
+              Icons.waving_hand_sharp,
+              color: Colors.yellow,
+          ),
+        ],
+      ),
+    );
+  }
 //test
   Widget buildServiceGridview(BuildContext context, String title, IconData icon,
       Function() tapHandler) {
@@ -86,19 +90,19 @@ class _BodyOverviewScreenState extends State<BodyOverviewScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text('Chào'),
-                      // getData( _currentUser.user.userName),
+                      getData( _currentUser.user.userName),
                       Row(
                         children: const [
                           
-                          Text(
-                            'Phạm Hòn Việt  ',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Icon(
-                            Icons.waving_hand_sharp,
-                            color: Colors.yellow,
-                          ),
+                          // Text(
+                          //   'Phạm Hòn Việt  ',
+                          //   style: TextStyle(
+                          //       fontSize: 20, fontWeight: FontWeight.bold),
+                          // ),
+                          // Icon(
+                          //   Icons.waving_hand_sharp,
+                          //   color: Colors.yellow,
+                          // ),
                         ],
                       ),
                     ],

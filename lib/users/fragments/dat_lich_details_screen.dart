@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_application_1/users/fragments/hoan_tat_dat_lich_screen.dart';
+import 'package:flutter_application_1/users/fragments/lich_kham_screen.dart';
+import 'package:flutter_application_1/users/fragments/overview_app_screen.dart';
 
 class DatLichDetailsScreen extends StatefulWidget {
   const DatLichDetailsScreen({super.key});
@@ -255,8 +257,10 @@ class _DatLichDetailsState extends State<DatLichDetailsScreen> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                     onPressed: () {
+                      // LichKhamScreen(_selectedDate);
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HoanTatDatLichScreen()));
+                          builder: (context) =>
+                              HoanTatDatLichScreen(_selectedDate)));
                     },
                     child: const Text(
                       'Xác nhận',

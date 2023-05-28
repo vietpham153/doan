@@ -256,7 +256,7 @@ class _DatLichDetailsState extends State<DatLichDetailsScreenD> {
                                 BorderRadius.all(Radius.circular(10)))),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HoanTatDatLichScreen()));
+                          builder: (context) => HoanTatDatLichScreen(_selectedDate)));
                     },
                     child: const Text(
                       'Xác nhận',

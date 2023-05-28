@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/users/fragments/overview_app_screen.dart';
 
 class HoanTatDatLichScreen extends StatefulWidget {
-  const HoanTatDatLichScreen({super.key});
+  const HoanTatDatLichScreen(DateTime selectedDate, {super.key});
 
   @override
   State<HoanTatDatLichScreen> createState() => _HoanTatDatLichScreenState();
